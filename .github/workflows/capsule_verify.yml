@@ -1,0 +1,63 @@
+name: Capsule Verification
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify_all_capsules:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify + Replay all capsules
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+
+          Write-Host "=== SSUM-AIM Observatory: Capsule Verification ==="
+          Write-Host "Repo root: $PWD"
+
+          # Discover capsule directories like 01_*, 02_*, ...
+          $capsules = Get-ChildItem -Directory | Where-Object { $_.Name -match '^\d{2}_.+' } | Sort-Object Name
+
+          if (-not $capsules -or $capsules.Count -eq 0) {
+            throw "No capsule folders found at repo root (expected folders like 01_cic_identity_certificate)."
+          }
+
+          foreach ($c in $capsules) {
+            Write-Host ""
+            Write-Host "=== Capsule: $($c.Name) ==="
+
+            $verify = Join-Path $c.FullName "VERIFY_CIC.cmd"
+            $replay = Join-Path $c.FullName "REPLAY_CIC.cmd"
+
+            # If you later add capsules with different script names, we can expand discovery.
+            if (-not (Test-Path $verify)) {
+              throw "Missing VERIFY_CIC.cmd in $($c.Name)"
+            }
+            if (-not (Test-Path $replay)) {
+              throw "Missing REPLAY_CIC.cmd in $($c.Name)"
+            }
+
+            Push-Location $c.FullName
+
+            Write-Host "--- Running VERIFY ---"
+            cmd /c ".\VERIFY_CIC.cmd"
+
+            Write-Host "--- Running REPLAY ---"
+            cmd /c ".\REPLAY_CIC.cmd"
+
+            Pop-Location
+          }
+
+          Write-Host ""
+          Write-Host "=== OVERALL STATUS: PASS ==="
