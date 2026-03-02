@@ -2,6 +2,8 @@
 
 Artificial Intelligence Manifest Observatory
 
+[![Capsule Verification](https://github.com/OMPSHUNYAYA/SSUM-AIM-Observatory/actions/workflows/capsule_verify.yml/badge.svg)](https://github.com/OMPSHUNYAYA/SSUM-AIM-Observatory/actions/workflows/capsule_verify.yml)
+
 ![SSUM-AIM](https://img.shields.io/badge/SSUM--AIM-Artificial%20Intelligence%20Manifest-black)
 ![Deterministic](https://img.shields.io/badge/Deterministic-Yes-green)
 ![Replay--Identity](https://img.shields.io/badge/Replay--Identity-B_A%20%3D%20B_B-brightgreen)
