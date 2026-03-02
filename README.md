@@ -1,6 +1,6 @@
 # ⭐ SSUM-AIM Observatory
 
-Artificial Intelligence Manifest Observatory
+**Artificial Intelligence Manifest Observatory**
 
 [![Capsule Verification](https://github.com/OMPSHUNYAYA/SSUM-AIM-Observatory/actions/workflows/capsule_verify.yml/badge.svg)](https://github.com/OMPSHUNYAYA/SSUM-AIM-Observatory/actions/workflows/capsule_verify.yml)
 
@@ -503,15 +503,17 @@ There is no authority override.
 
 ---
 
-## License
+## 🌍 Open Standard
 
-Open Standard.
+SSUM-AIM Observatory is published as an **Open Standard** under an open license.
 
-SSUM-AIM Observatory is provided as-is, without warranty.
+This project is provided **as-is, without warranty**.
 
-You may use, study, modify, and extend these certification primitives freely.
+Attribution is recommended but not required:
 
-Conformance is defined structurally through replay identity:
+Implements SSUM-AIM Observatory deterministic certification methodology.
+
+Conformance defined exclusively by:
 
 `B_A = B_B`
 
