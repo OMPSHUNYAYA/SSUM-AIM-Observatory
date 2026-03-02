@@ -1,0 +1,9 @@
+CIC Observatory Freeze Anchor
+-----------------------------
+Script: cic_demo.py
+Script_SHA256: adac8675e0ff90f6c7e9c26d9ecc57124046b9de6fa9fb5c16c181a95b7de9e1
+MANIFEST: MANIFEST.sha256
+VERIFY: VERIFY_CIC.cmd
+
+This case is certified by manifest match.
+Replay identity may additionally be enforced by running REPLAY_CIC.cmd.

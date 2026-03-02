@@ -1,0 +1,14 @@
+SSUM-AIM Observatory — CIC Identity Certification
+--------------------------------------------------
+
+Test 1 — Identity Certification
+Result: (True, None, None, None)
+Certificate: IDENTICAL over tested domain
+
+Test 2 — Divergence Detection
+Result: (False, 47, 2209, -1)
+Certificate: DIVERGENCE at input 47
+square_direct(x) = 2209
+square_bug(x) = -1
+
+CIC execution complete.
