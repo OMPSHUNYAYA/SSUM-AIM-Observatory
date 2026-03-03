@@ -1,0 +1,22 @@
+SSUM-AIM OBSERVATORY FREEZE NOTE
+
+Capsule: AIC (Automatic Inverse Constructor)
+
+Authority condition:
+B_A = B_B
+
+Freeze boundary (authoritative):
+- aic_core.py
+- aic_demo.py
+- AIC_MANIFEST.sha256
+- OUT_PRIMARY.txt
+- OUT_A.txt
+- OUT_B.txt
+- VERIFY_AIC.cmd
+- REPLAY_AIC.cmd
+
+Non-authoritative:
+- README files
+- docs
+- interpreter cache
+- temp files

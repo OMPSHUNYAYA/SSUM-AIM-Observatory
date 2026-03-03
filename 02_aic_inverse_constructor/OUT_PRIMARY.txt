@@ -1,0 +1,12 @@
+SSUM-AIM Observatory — AIC Inverse Constructor
+------------------------------------------------
+
+Example 1 — Inverse Construction
+Certificate: INVERTIBLE
+Inverse mapping: {0: 0, 3: 1, 6: 2, 9: 3, 1: 4, 4: 5, 7: 6, 10: 7, 2: 8, 5: 9, 8: 10}
+
+Example 2 — Collision Detection
+Certificate: NOT INVERTIBLE
+Collision at output 3 from inputs 5 and 6
+
+AIC execution complete.
