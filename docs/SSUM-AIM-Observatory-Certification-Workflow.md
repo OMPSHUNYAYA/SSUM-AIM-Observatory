@@ -104,7 +104,7 @@ The manifest must contain SHA-256 hashes of:
 
 Conceptually:
 
-`manifest = SHA256(frozen_artifacts)`
+`manifest = SHA256(boundary_files)`
 
 Manifest integrity defines the certification baseline.
 
@@ -156,8 +156,8 @@ Replay identity requires:
 
 Where:
 
-• `B_A` = certification artifacts from primary execution  
-• `B_B` = certification artifacts from independent replay  
+• `B_A` = SHA256(primary_execution_artifact) 
+• `B_B` = SHA256(replay_execution_artifact)
 
 Artifacts must be byte-identical.
 
