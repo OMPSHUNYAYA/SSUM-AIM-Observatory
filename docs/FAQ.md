@@ -155,8 +155,8 @@ Replay identity means two independent executions produce byte-identical certific
 
 Where:
 
-`B_A` = primary execution manifest  
-`B_B` = replay execution manifest  
+`B_A` = SHA256(primary_execution_artifact)  
+`B_B` = SHA256(replay_execution_artifact)
 
 Replay identity is the **highest authority**.
 
@@ -198,7 +198,7 @@ A manifest is a deterministic SHA256 fingerprint record of certification artifac
 
 Example abstraction:
 
-`manifest = SHA256(structured_execution_trace)`
+`manifest = SHA256(boundary_files)`
 
 The manifest defines the authoritative freeze boundary.
 
