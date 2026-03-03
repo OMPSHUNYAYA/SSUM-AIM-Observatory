@@ -107,7 +107,8 @@ SSUM-AIM-Observatory/
 ├── docs/  
 │   ├── Quickstart.md  
 │   ├── FAQ.md  
-│   └── SSUM-AIM-Observatory-Certification-Workflow.md  
+│   ├── SSUM-AIM-Observatory-Certification-Workflow.md  
+│   └── README_CASES.md  
 │  
 ├── 01_cic_identity_certificate/  
 │   ├── cic_core.py  
@@ -120,23 +121,35 @@ SSUM-AIM-Observatory/
 │   ├── OUT_A.txt  
 │   └── OUT_B.txt  
 │  
-├── 02_flc_lineage_certificate/  
-│   └── (future cases)  
+├── 02_aic_inverse_constructor/  
+│   ├── aic_core.py  
+│   ├── aic_demo.py  
+│   ├── VERIFY_AIC.cmd  
+│   ├── REPLAY_AIC.cmd  
+│   ├── AIC_MANIFEST.sha256  
+│   ├── FREEZE_NOTE.txt  
+│   ├── OUT_PRIMARY.txt  
+│   ├── OUT_A.txt  
+│   └── OUT_B.txt  
 │  
-└── reference/  
-    └── (optional future certification anchors)
+└── (future capsules follow the same numbered structure)
 ```
 
-Each case is fully standalone.
+Each capsule is fully standalone.
 
-Each case contains:
+Each capsule contains:
 
-• certification kernel  
-• demo execution script  
+• deterministic certification kernel  
+• deterministic demo harness  
 • verification script  
 • replay certification script  
 • manifest file  
 • certification artifacts  
+• freeze declaration  
+
+Capsule governance and boundary rules are defined in:
+
+`docs/README_CASES.md`
 
 ---
 
@@ -163,34 +176,36 @@ Interpreter cache files and temporary artifacts are excluded from certification 
 
 For full lifecycle discipline, see:
 
-`SSUM-AIM-Observatory-Certification-Workflow.md`
+`docs/SSUM-AIM-Observatory-Certification-Workflow.md`
 
 ---
 
 ## Recommended Verification (Official Method)
 
-Navigate to a case folder:
+Navigate to any capsule folder:
 
 `cd 01_cic_identity_certificate`
+
+(or another numbered capsule such as `02_aic_inverse_constructor`)
 
 Run verification:
 
 ```
-VERIFY_CIC.cmd
+VERIFY_*.cmd
 ```
 
 Expected output:
 
-```
-STATUS: PASS  
-REASON: MANIFEST_MATCHED  
-```
+`STATUS: PASS`
+`REASON: MANIFEST_MATCHED`
 
 This confirms:
 
 • artifact integrity  
 • manifest integrity  
 • deterministic certification validity  
+
+Verification succeeds only if the capsule boundary matches its manifest exactly.
 
 ---
 
@@ -199,7 +214,7 @@ This confirms:
 Run replay certification:
 
 ```
-REPLAY_CIC.cmd
+REPLAY_*.cmd
 ```
 
 Expected output:
@@ -224,13 +239,13 @@ Replay identity is the final certification authority.
 Run certification kernel manually:
 
 ```
-python cic_demo.py > OUT_PRIMARY.txt
+python *_demo.py > OUT_PRIMARY.txt
 ```
 
 Re-run:
 
 ```
-python cic_demo.py > OUT_REPLAY.txt
+python *_demo.py > OUT_REPLAY.txt
 ```
 
 Compare outputs (Windows):
@@ -301,26 +316,40 @@ It does not alter execution semantics.
 
 ---
 
-## Recommended First Case
+## Recommended Starting Capsules
 
-Start with:
+Start with either:
 
 `01_cic_identity_certificate`
 
-Run:
+or
+
+`02_aic_inverse_constructor`
+
+Example (CIC):
 
 ```
-VERIFY_CIC.cmd  
+VERIFY_CIC.cmd
 ```
 
 ```
 REPLAY_CIC.cmd
 ```
 
+Example (AIC):
+
+```
+VERIFY_AIC.cmd
+```
+
+```
+REPLAY_AIC.cmd
+```
+
 Expected result:
 
 STATUS: PASS  
-REASON: REPLAY_IDENTITY_CONFIRMED (`B_A = B_B`)  
+REASON: REPLAY_IDENTITY_CONFIRMED (`B_A = B_B`)
 
 ---
 
