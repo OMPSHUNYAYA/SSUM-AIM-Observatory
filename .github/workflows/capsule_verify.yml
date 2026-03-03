@@ -2,7 +2,15 @@ name: Capsule Verification
 
 on:
   push:
+    branches: [ "main" ]
+    paths:
+      - "Public_Release/0*_*/**"
+      - ".github/workflows/**"
   pull_request:
+    branches: [ "main" ]
+    paths:
+      - "Public_Release/0*_*/**"
+      - ".github/workflows/**"
   workflow_dispatch:
 
 jobs:
@@ -13,11 +21,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
       - name: Verify + Replay all capsules
         shell: pwsh
         run: |
@@ -26,35 +29,42 @@ jobs:
           Write-Host "=== SSUM-AIM Observatory: Capsule Verification ==="
           Write-Host "Repo root: $PWD"
 
+          $root = Join-Path $PWD "Public_Release"
+          if (-not (Test-Path $root)) {
+            throw "Missing Public_Release directory at repo root."
+          }
+
+          Write-Host "Public_Release: $root"
+
           # Discover capsule directories like 01_*, 02_*, ...
-          $capsules = Get-ChildItem -Directory | Where-Object { $_.Name -match '^\d{2}_.+' } | Sort-Object Name
+          $capsules = Get-ChildItem -Path $root -Directory | Where-Object { $_.Name -match '^\d{2}_.+' } | Sort-Object Name
 
           if (-not $capsules -or $capsules.Count -eq 0) {
-            throw "No capsule folders found at repo root (expected folders like 01_cic_identity_certificate)."
+            throw "No capsule folders found under Public_Release (expected folders like 01_*, 02_*, ...)."
           }
 
           foreach ($c in $capsules) {
             Write-Host ""
             Write-Host "=== Capsule: $($c.Name) ==="
 
-            $verify = Join-Path $c.FullName "VERIFY_CIC.cmd"
-            $replay = Join-Path $c.FullName "REPLAY_CIC.cmd"
+            # Support per-capsule naming (VERIFY_*.cmd / REPLAY_*.cmd)
+            $verify = Get-ChildItem -Path $c.FullName -Filter "VERIFY_*.cmd" -File | Select-Object -First 1
+            $replay = Get-ChildItem -Path $c.FullName -Filter "REPLAY_*.cmd" -File | Select-Object -First 1
 
-            # If you later add capsules with different script names, we can expand discovery.
-            if (-not (Test-Path $verify)) {
-              throw "Missing VERIFY_CIC.cmd in $($c.Name)"
+            if (-not $verify) {
+              throw "Missing VERIFY_*.cmd in $($c.Name)"
             }
-            if (-not (Test-Path $replay)) {
-              throw "Missing REPLAY_CIC.cmd in $($c.Name)"
+            if (-not $replay) {
+              throw "Missing REPLAY_*.cmd in $($c.Name)"
             }
 
             Push-Location $c.FullName
 
-            Write-Host "--- Running VERIFY ---"
-            cmd /c ".\VERIFY_CIC.cmd"
+            Write-Host ("--- Running VERIFY: {0} ---" -f $verify.Name)
+            cmd /c ".\$($verify.Name)"
 
-            Write-Host "--- Running REPLAY ---"
-            cmd /c ".\REPLAY_CIC.cmd"
+            Write-Host ("--- Running REPLAY: {0} ---" -f $replay.Name)
+            cmd /c ".\$($replay.Name)"
 
             Pop-Location
           }
