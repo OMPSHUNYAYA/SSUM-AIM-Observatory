@@ -4,12 +4,12 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - "Public_Release/0*_*/**"
+      - "0*_*/**"
       - ".github/workflows/**"
   pull_request:
     branches: [ "main" ]
     paths:
-      - "Public_Release/0*_*/**"
+      - "0*_*/**"
       - ".github/workflows/**"
   workflow_dispatch:
 
@@ -29,34 +29,22 @@ jobs:
           Write-Host "=== SSUM-AIM Observatory: Capsule Verification ==="
           Write-Host "Repo root: $PWD"
 
-          $root = Join-Path $PWD "Public_Release"
-          if (-not (Test-Path $root)) {
-            throw "Missing Public_Release directory at repo root."
-          }
-
-          Write-Host "Public_Release: $root"
-
           # Discover capsule directories like 01_*, 02_*, ...
-          $capsules = Get-ChildItem -Path $root -Directory | Where-Object { $_.Name -match '^\d{2}_.+' } | Sort-Object Name
+          $capsules = Get-ChildItem -Path $PWD -Directory | Where-Object { $_.Name -match '^\d{2}_.+' } | Sort-Object Name
 
           if (-not $capsules -or $capsules.Count -eq 0) {
-            throw "No capsule folders found under Public_Release (expected folders like 01_*, 02_*, ...)."
+            throw "No capsule folders found at repo root (expected folders like 01_*, 02_*, ...)."
           }
 
           foreach ($c in $capsules) {
             Write-Host ""
             Write-Host "=== Capsule: $($c.Name) ==="
 
-            # Support per-capsule naming (VERIFY_*.cmd / REPLAY_*.cmd)
             $verify = Get-ChildItem -Path $c.FullName -Filter "VERIFY_*.cmd" -File | Select-Object -First 1
             $replay = Get-ChildItem -Path $c.FullName -Filter "REPLAY_*.cmd" -File | Select-Object -First 1
 
-            if (-not $verify) {
-              throw "Missing VERIFY_*.cmd in $($c.Name)"
-            }
-            if (-not $replay) {
-              throw "Missing REPLAY_*.cmd in $($c.Name)"
-            }
+            if (-not $verify) { throw "Missing VERIFY_*.cmd in $($c.Name)" }
+            if (-not $replay) { throw "Missing REPLAY_*.cmd in $($c.Name)" }
 
             Push-Location $c.FullName
 
