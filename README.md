@@ -2,7 +2,7 @@
 
 **Artificial Intelligence Manifest Observatory**
 
-[![Capsule Verification](https://github.com/OMPSHUNYAYA/SSUM-AIM-Observatory/actions/workflows/capsule_verify.yml/badge.svg)](https://github.com/OMPSHUNYAYA/SSUM-AIM-Observatory/actions/workflows/capsule_verify.yml)
+[![Capsule Verification](https://github.com/OMPSHUNYAYA/SSUM-AIM-Observatory/actions/workflows/capsule_verify.yml/badge.svg?branch=main&event=push)](https://github.com/OMPSHUNYAYA/SSUM-AIM-Observatory/actions/workflows/capsule_verify.yml)
 
 ![SSUM-AIM](https://img.shields.io/badge/SSUM--AIM-Artificial%20Intelligence%20Manifest-black)
 ![Deterministic](https://img.shields.io/badge/Deterministic-Yes-green)
