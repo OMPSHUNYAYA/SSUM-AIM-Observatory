@@ -71,10 +71,15 @@ Only computation.
 - [Quickstart Guide](docs/Quickstart.md)  
 - [FAQ](docs/FAQ.md)  
 - [Certification Workflow Standard](docs/SSUM-AIM-Observatory-Certification-Workflow.md)  
+- [Capsule Governance Notes](README_CASES.md)  
 
 The workflow document defines the mandatory certification lifecycle:
 
 Create → Execute → Manifest → Verify → Replay → Freeze → Publish
+
+Capsule governance and freeze-boundary rules are defined in:
+
+`README_CASES.md`
 
 Certification authority is defined solely by:
 
@@ -82,56 +87,42 @@ Certification authority is defined solely by:
 
 ---
 
-### ⚙ Deterministic Verification (First Capsule Entry Point)
+### ⚙ Deterministic Verification (Capsule Entry Points)
 
-Primary certification capsule:
+SSUM-AIM capsules are numbered and self-contained.
 
-- [`01_cic_identity_certificate/`](01_cic_identity_certificate/)
+Each capsule directory follows the invariant structure defined in `README_CASES.md`.
 
-Core scripts:
+Current capsules:
 
-- [`01_cic_identity_certificate/cic_core.py`](01_cic_identity_certificate/cic_core.py)  
-- [`01_cic_identity_certificate/cic_demo.py`](01_cic_identity_certificate/cic_demo.py)  
+- [`01_cic_identity_certificate/`](01_cic_identity_certificate/) — **CIC** (Computation Identity Certificate)  
+- [`02_aic_inverse_constructor/`](02_aic_inverse_constructor/) — **AIC** (Automatic Inverse Constructor)  
 
-Verification scripts:
+Each capsule contains:
 
-- [`01_cic_identity_certificate/VERIFY_CIC.cmd`](01_cic_identity_certificate/VERIFY_CIC.cmd)  
-- [`01_cic_identity_certificate/REPLAY_CIC.cmd`](01_cic_identity_certificate/REPLAY_CIC.cmd)  
-
-Run verification:
-
-`VERIFY_CIC.cmd`
-
-Replay certification:
-
-`REPLAY_CIC.cmd`
-
-Replay condition:
-
-`B_A = B_B`
-
-Byte identity is required.  
-No tolerance.  
-No probabilistic equivalence.
+- deterministic kernel (`*_core.py`)  
+- deterministic demo harness (`*_demo.py`)  
+- manifest file (`*_MANIFEST.sha256`)  
+- verification script (`VERIFY_*.cmd`)  
+- replay script (`REPLAY_*.cmd`)  
+- freeze declaration  
 
 ---
 
-### 🧪 Independent Capsule Verification (Recommended First Step)
+### 🧪 Independent Capsule Verification
 
-Navigate to:
+To verify any capsule:
 
-`01_cic_identity_certificate/`
+1. Navigate to the capsule directory (e.g., `01_cic_identity_certificate/` or `02_aic_inverse_constructor/`).
+2. Run:
 
-Capsule contains:
+`VERIFY_*.cmd`
 
-- deterministic kernel  
-- deterministic demo execution  
-- manifest file (`CIC_MANIFEST.sha256`)  
-- verification script  
-- replay script  
-- freeze declaration  
+3. Replay certification:
 
-Verification succeeds only if:
+`REPLAY_*.cmd`
+
+Verification succeeds **if and only if**:
 
 Manifest integrity PASS  
 and  
@@ -245,7 +236,7 @@ Only replay identity defines certification validity.
 
 Each certification kernel is intentionally minimal.
 
-The first complete certification case (CIC) — including kernel and demo — is approximately **3 KB total**.
+The initial certification capsules (CIC and AIC) — including kernel and demo — are each only a few kilobytes in total.
 
 No frameworks.  
 No dependencies.  
@@ -320,7 +311,7 @@ Authority comes from replay identity — not narrative.
 
 Each case produces a deterministic manifest:
 
-`manifest = SHA256(structured_execution_trace)`
+`manifest = SHA256(boundary_files)`
 
 Replay identity condition:
 
@@ -336,7 +327,7 @@ This is deterministic Artificial Intelligence execution certification.
 
 ---
 
-## CIC — Computation Identity Certificate (First Capsule)
+## CIC — Computation Identity Certificate
 
 Given:
 
@@ -366,6 +357,118 @@ No statistical confidence.
 No probabilistic reasoning.  
 
 Full deterministic domain evaluation.
+
+---
+
+## AIC — Automatic Inverse Constructor (Second Capsule)
+
+Given a function:
+
+`f : D -> R`
+
+Where `D` is a finite, fully enumerable domain.
+
+AIC evaluates structural invertibility over `D`.
+
+### Certification Logic
+
+For each `x` in `D`:
+
+- Compute `y = f(x)`
+- If a prior input maps to the same `y`, return a collision witness
+- Otherwise construct the exact inverse mapping
+
+Certification produces one of two deterministic outcomes:
+
+**INVERTIBLE**
+
+An explicit inverse mapping:
+
+`f^{-1} : R -> D`
+
+**NOT INVERTIBLE**
+
+A structural collision witness:
+
+`f(x1) = f(x2)` where `x1 ≠ x2`
+
+---
+
+### Certification Rule
+
+Invertibility is certified **if and only if** every output in `R` maps to exactly one input in `D`.
+
+Collision detection rule:
+
+If there exist `x1 ≠ x2` such that:
+
+`f(x1) = f(x2)`
+
+Invertibility is rejected.
+
+There is:
+
+• No probabilistic assumption  
+• No symbolic solver  
+• No heuristic reasoning  
+
+Full deterministic domain evaluation.
+
+---
+
+### Capsule Entry Point
+
+Navigate to:
+
+`02_aic_inverse_constructor/`
+
+Core scripts:
+
+- `aic_core.py`
+- `aic_demo.py`
+
+Verification:
+
+`VERIFY_AIC.cmd`
+
+Replay certification:
+
+`REPLAY_AIC.cmd`
+
+Replay authority condition:
+
+`B_A = B_B`
+
+Certification succeeds only if:
+
+Manifest integrity PASS  
+and  
+Replay identity PASS  
+
+Under invariant:
+
+`B_A = B_B`
+
+---
+
+### Structural Role in the Observatory
+
+CIC certifies computational identity.
+
+AIC certifies computational invertibility.
+
+Together they establish:
+
+• identity certification  
+• reversibility certification  
+
+Both governed exclusively by:
+
+`B_A = B_B`
+
+Deterministic structure.  
+Binary conformance.  
+Infrastructure-independent verification.
 
 ---
 
@@ -399,16 +502,16 @@ Execution authority overrides narrative authority.
 
 ## Deterministic Verification Procedure
 
-Primary execution:
+Primary execution (generic capsule):
 
 ```
-python cic_demo.py > OUT_PRIMARY.txt
+python *_demo.py > OUT_PRIMARY.txt
 ```
 
 Replay execution:
 
 ```
-python cic_demo.py > OUT_REPLAY.txt
+python *_demo.py > OUT_REPLAY.txt
 ```
 
 Manifest comparison:
@@ -423,7 +526,7 @@ If identical, execution identity is certified.
 
 If not identical, execution identity is not certified.
 
-No partial conformance.
+There is no partial conformance.
 
 ---
 
