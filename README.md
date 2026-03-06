@@ -97,6 +97,7 @@ Current capsules:
 
 - [`01_cic_identity_certificate/`](01_cic_identity_certificate/) — **CIC** (Computation Identity Certificate)  
 - [`02_aic_inverse_constructor/`](02_aic_inverse_constructor/) — **AIC** (Automatic Inverse Constructor)  
+- [`03_cyc_cycle_certificate/`](03_cyc_cycle_certificate/) — **CYC** (Cycle Structure Certificate)  
 
 Each capsule contains:
 
@@ -236,7 +237,7 @@ Only replay identity defines certification validity.
 
 Each certification kernel is intentionally minimal.
 
-The initial certification capsules (CIC and AIC) — including kernel and demo — are each only a few kilobytes in total.
+The initial certification capsules (**CIC**, **AIC**, and **CYC**) — including kernel and demo — are each only a few kilobytes in total.
 
 No frameworks.  
 No dependencies.  
@@ -457,18 +458,132 @@ CIC certifies computational identity.
 
 AIC certifies computational invertibility.
 
-Together they establish:
+CYC certifies deterministic cycle structure in iterative computation.
+
+Together the first three capsules establish:
 
 • identity certification  
 • reversibility certification  
+• cyclic structure certification  
 
-Both governed exclusively by:
+These represent foundational structural truths of deterministic computation.
+
+All governed exclusively by:
 
 `B_A = B_B`
 
 Deterministic structure.  
 Binary conformance.  
 Infrastructure-independent verification.
+
+---
+
+## CYC — Cycle Structure Certificate (Third Capsule)
+
+CYC certifies the structural cycle properties of deterministic iterative functions.
+
+Given a function:
+
+`f : S -> S`
+
+where `S` is a finite state space, repeated application of `f` must eventually produce a cycle.
+
+CYC deterministically detects and certifies:
+
+• `mu` — the entry distance before the cycle begins  
+• `lambda` — the cycle length  
+• the explicit cycle values  
+
+---
+
+### Certification Logic
+
+Given an initial state `x0`, the system computes the iterative sequence:
+
+`x_{n+1} = f(x_n)`
+
+CYC deterministically identifies:
+
+• the first cycle entry point  
+• the cycle length  
+• the exact repeating cycle  
+
+The certificate includes:
+
+• `mu`  
+• `lambda`  
+• cycle entry  
+• full cycle sequence  
+
+---
+
+### Certification Rule
+
+Cycle structure is certified **if and only if**:
+
+• a cycle is detected within the search bound  
+• the detected cycle verifies under replay  
+
+Certification authority remains:
+
+`B_A = B_B`
+
+---
+
+### Capsule Entry Point
+
+Navigate to:
+
+`03_cyc_cycle_certificate/`
+
+Core scripts:
+
+- `cyc_core.py`
+- `cyc_demo.py`
+
+Verification:
+
+`VERIFY_CYC.cmd`
+
+Replay certification:
+
+`REPLAY_CYC.cmd`
+
+Replay authority condition:
+
+`B_A = B_B`
+
+Certification succeeds only if:
+
+Manifest integrity PASS  
+and  
+Replay identity PASS  
+
+under invariant:
+
+`B_A = B_B`
+
+---
+
+### Structural Role in the Observatory
+
+CYC certifies **cycle structure in deterministic iteration**.
+
+Together the first three capsules certify:
+
+• **CIC** — computational identity  
+• **AIC** — structural invertibility  
+• **CYC** — cycle structure  
+
+These represent foundational structural truths of computation:
+
+• identity  
+• reversibility  
+• cyclic structure  
+
+All governed exclusively by:
+
+`B_A = B_B`
 
 ---
 
