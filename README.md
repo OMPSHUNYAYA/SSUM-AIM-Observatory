@@ -15,6 +15,8 @@
 
 **Deterministic AI Certification Kernels (1.05 KB+) • Manifest-Bound Execution • Replay-Verified Identity • Infrastructure-Independent Verification • Open Standard**
 
+*In SSUM-AIM, Artificial Intelligence refers to deterministic computational intelligence rather than probabilistic machine learning.*
+
 ---
 
 ## The Structural Shift
@@ -24,6 +26,10 @@ The kernel produces a deterministic certificate — not just an output.
 SSUM-AIM does not assert execution correctness.
 
 It certifies execution identity.
+
+**SSUM-AIM preserves classical computation under the collapse rule:**
+
+`phi((m,a,s)) = m`
 
 Certification authority is defined solely by:
 
