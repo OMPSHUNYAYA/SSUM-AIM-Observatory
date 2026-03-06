@@ -132,7 +132,18 @@ SSUM-AIM-Observatory/
 │   ├── OUT_A.txt  
 │   └── OUT_B.txt  
 │  
-└── (future capsules follow the same numbered structure)
+├── 03_cyc_cycle_certificate/  
+│   ├── cyc_core.py  
+│   ├── cyc_demo.py  
+│   ├── RUN_CYC.cmd  
+│   ├── VERIFY_CYC.cmd  
+│   ├── REPLAY_CYC.cmd  
+│   ├── RUN_ALL_TESTS.cmd  
+│   ├── CYC_MANIFEST.sha256  
+│   ├── FREEZE_NOTE.txt  
+│   ├── OUT_PRIMARY.txt  
+│   ├── OUT_A.txt  
+│   └── OUT_B.txt  
 ```
 
 Each capsule is fully standalone.
