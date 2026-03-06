@@ -1,0 +1,36 @@
+CYC — Cycle Structure Certificate
+
+Example 1
+label: f(x)=(x*x+1)%97
+x0: 2
+limit: 1000000
+mu: 1
+lambda: 3
+entry: 5
+verified: True
+verify_reason: OK
+cycle: [5, 26, 95]
+
+Example 2
+label: g(x)=(3*x+1)%11
+x0: 0
+limit: 1000000
+mu: 0
+lambda: 5
+entry: 0
+verified: True
+verify_reason: OK
+cycle: [0, 1, 4, 2, 7]
+
+Example 3
+label: lcg(x)=(5*x+1)%16
+x0: 0
+limit: 1000000
+mu: 0
+lambda: 16
+entry: 0
+verified: True
+verify_reason: OK
+cycle: [0, 1, 6, 15, 12, 13, 2, 11, 8, 9, 14, 7, 4, 5, 10, 3]
+
+CYC execution complete.

@@ -1,0 +1,27 @@
+SSUM-AIM Observatory
+Case: CYC — Cycle Structure Certificate
+
+Freeze Status:
+This case has completed civilization-grade testing in the working environment.
+
+Frozen Components:
+- cyc_core.py
+- cyc_demo.py
+- RUN_CYC.cmd
+- REPLAY_CYC.cmd
+- VERIFY_CYC.cmd
+- RUN_ALL_TESTS.cmd
+- OUT_PRIMARY.txt
+- OUT_A.txt
+- OUT_B.txt
+
+Freeze Conditions Confirmed:
+- Clean rerun completed
+- Replay run A completed
+- Replay run B completed
+- Byte-identical replay verified
+- Output format locked for release preparation
+
+Note:
+Hash manifest is not generated in the working environment.
+Hashing will be performed only after move to Public_Release.

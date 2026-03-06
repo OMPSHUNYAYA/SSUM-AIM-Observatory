@@ -1,0 +1,27 @@
+SHA256 hash of cyc_core.py:
+99044c0ee41e32c3dac6b1cbf627f384688675c1f3c93e5260b68c87a19984cf
+CertUtil: -hashfile command completed successfully.
+SHA256 hash of cyc_demo.py:
+bd3a78514f97450050eef5d21d747d4effacd7e692c736e0e1049149c785bf8f
+CertUtil: -hashfile command completed successfully.
+SHA256 hash of RUN_CYC.cmd:
+cac6b5f6e641893faf79daa942f690468756a7e6598f1055a60d36a0d556262c
+CertUtil: -hashfile command completed successfully.
+SHA256 hash of REPLAY_CYC.cmd:
+05fd0567ca28e8a9a89dae39b50c61f0ba444125ef8b3e5ce61fde77009c52ff
+CertUtil: -hashfile command completed successfully.
+SHA256 hash of VERIFY_CYC.cmd:
+e5536d14c394d100e4fb66bbb829cee92ca7d23eecc4a536a4ad5057adf25af7
+CertUtil: -hashfile command completed successfully.
+SHA256 hash of RUN_ALL_TESTS.cmd:
+fb922a0ff8a1f3163f810fd03ff02e9b5152af4c059756d04af43d9663a18056
+CertUtil: -hashfile command completed successfully.
+SHA256 hash of OUT_PRIMARY.txt:
+7982b91196b13cf0cf9c85df9968fa204033d4173fcf86d9580710505e84d657
+CertUtil: -hashfile command completed successfully.
+SHA256 hash of OUT_A.txt:
+7982b91196b13cf0cf9c85df9968fa204033d4173fcf86d9580710505e84d657
+CertUtil: -hashfile command completed successfully.
+SHA256 hash of OUT_B.txt:
+7982b91196b13cf0cf9c85df9968fa204033d4173fcf86d9580710505e84d657
+CertUtil: -hashfile command completed successfully.
