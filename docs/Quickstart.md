@@ -143,6 +143,19 @@ SSUM-AIM-Observatory/
 │   ├── FREEZE_NOTE.txt  
 │   ├── OUT_PRIMARY.txt  
 │   ├── OUT_A.txt  
+│   ├── OUT_B.txt
+│
+├── 04_erc_execution_replay_certificate/  
+│   ├── erc_core.py  
+│   ├── erc_demo.py  
+│   ├── RUN_ERC.cmd  
+│   ├── VERIFY_ERC.cmd  
+│   ├── REPLAY_ERC.cmd  
+│   ├── RUN_ALL_TESTS.cmd  
+│   ├── ERC_MANIFEST.sha256  
+│   ├── FREEZE_NOTE.txt  
+│   ├── OUT_PRIMARY.txt  
+│   ├── OUT_A.txt  
 │   └── OUT_B.txt  
 ```
 
