@@ -98,6 +98,7 @@ Current capsules:
 - [`01_cic_identity_certificate/`](01_cic_identity_certificate/) — **CIC** (Computation Identity Certificate)  
 - [`02_aic_inverse_constructor/`](02_aic_inverse_constructor/) — **AIC** (Automatic Inverse Constructor)  
 - [`03_cyc_cycle_certificate/`](03_cyc_cycle_certificate/) — **CYC** (Cycle Structure Certificate)  
+- [`04_erc_execution_replay_certificate/`](04_erc_execution_replay_certificate/) — **ERC** (Execution Replay Certificate)  
 
 Each capsule contains:
 
@@ -237,7 +238,7 @@ Only replay identity defines certification validity.
 
 Each certification kernel is intentionally minimal.
 
-The initial certification capsules (**CIC**, **AIC**, and **CYC**) — including kernel and demo — are each only a few kilobytes in total.
+The initial certification capsules (**CIC**, **AIC**, **CYC**, and **ERC**) — including kernel and demo — are each only a few kilobytes in total.
 
 No frameworks.  
 No dependencies.  
@@ -452,32 +453,6 @@ Under invariant:
 
 ---
 
-### Structural Role in the Observatory
-
-CIC certifies computational identity.
-
-AIC certifies computational invertibility.
-
-CYC certifies deterministic cycle structure in iterative computation.
-
-Together the first three capsules establish:
-
-• identity certification  
-• reversibility certification  
-• cyclic structure certification  
-
-These represent foundational structural truths of deterministic computation.
-
-All governed exclusively by:
-
-`B_A = B_B`
-
-Deterministic structure.  
-Binary conformance.  
-Infrastructure-independent verification.
-
----
-
 ## CYC — Cycle Structure Certificate (Third Capsule)
 
 CYC certifies the structural cycle properties of deterministic iterative functions.
@@ -587,6 +562,133 @@ All governed exclusively by:
 
 ---
 
+## ERC — Execution Replay Certificate (Fourth Capsule)
+
+ERC certifies **execution identity**, not merely output equality.
+
+Two programs may produce the same output while following different internal execution paths.
+
+ERC deterministically detects this distinction.
+
+---
+
+### Certification Logic
+
+Given two traceable programs:
+
+`P_A` and `P_B`
+
+ERC evaluates:
+
+• output equality  
+• ordered execution trace equality  
+
+Certification produces one of four deterministic outcomes:
+
+**REPLAY CERTIFIED**
+
+Outputs match and full execution traces match.
+
+`trace_A = trace_B`
+
+---
+
+**TRACE_DIVERGENCE**
+
+Outputs match but execution traces diverge.
+
+ERC returns the **first divergence step**.
+
+---
+
+**OUTPUT_MISMATCH**
+
+Outputs differ.
+
+Execution identity cannot be certified.
+
+---
+
+**TRACE_LENGTH_MISMATCH**
+
+Trace lengths differ even if partial prefixes match.
+
+---
+
+### Certification Rule
+
+Execution identity is certified **if and only if**:
+
+• outputs match  
+• execution traces match completely  
+• replay verification confirms identical artifacts  
+
+Under invariant:
+
+`B_A = B_B`
+
+---
+
+### Capsule Entry Point
+
+Navigate to:
+
+`04_erc_execution_replay_certificate/`
+
+Core scripts:
+
+- `erc_core.py`
+- `erc_demo.py`
+
+Verification:
+
+`VERIFY_ERC.cmd`
+
+Replay certification:
+
+`REPLAY_ERC.cmd`
+
+Replay authority condition:
+
+`B_A = B_B`
+
+Certification succeeds only if:
+
+Manifest integrity PASS  
+and  
+Replay identity PASS  
+
+under invariant:
+
+`B_A = B_B`
+
+---
+
+### Structural Role in the Observatory
+
+ERC introduces **execution replay identity certification**.
+
+Two implementations can compute the **same result** while executing **different logic**.
+
+Traditional testing sees them as equivalent.
+
+ERC exposes the structural difference.
+
+Together the first four capsules certify:
+
+• **CIC** — computational identity  
+• **AIC** — structural invertibility  
+• **CYC** — cycle structure  
+• **ERC** — execution identity  
+
+These represent foundational structural observability layers of deterministic computation.
+
+All governed exclusively by:
+
+`B_A = B_B`
+
+---
+
 ## Capsule Standard (Civilization-Grade Rule)
 
 Every capsule must satisfy:
@@ -642,6 +744,60 @@ If identical, execution identity is certified.
 If not identical, execution identity is not certified.
 
 There is no partial conformance.
+
+---
+
+## Structural Capsule Progression
+
+The Observatory capsules reveal increasingly deeper structural truths of deterministic computation.
+
+**CIC — Computation Identity Certificate**
+
+Certifies that two functions produce identical outputs over a finite domain.
+
+`f(x) = g(x)` for all `x ∈ D`
+
+---
+
+**AIC — Automatic Inverse Constructor**
+
+Certifies whether a function is structurally invertible.
+
+If two inputs produce the same output, invertibility fails.
+
+---
+
+**CYC — Cycle Structure Certificate**
+
+Certifies deterministic cycle structure in iterative systems.
+
+Detects:
+
+• cycle entry distance `mu`  
+• cycle length `lambda`  
+• full repeating cycle
+
+---
+
+**ERC — Execution Replay Certificate**
+
+Certifies **execution identity**, not merely output equality.
+
+Two programs can produce the **same answer** while executing **different internal logic**.
+
+ERC deterministically detects this difference.
+
+It returns the **exact step where execution paths diverge**.
+
+This reveals a fundamental truth of computation:
+
+**same answer ≠ same execution**
+
+---
+
+All capsules remain governed exclusively by the invariant:
+
+`B_A = B_B`
 
 ---
 
