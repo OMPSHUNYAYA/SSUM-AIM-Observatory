@@ -1,0 +1,49 @@
+SSUM-AIM Observatory
+Capsule: 04_erc_execution_replay_certificate
+
+ERC — Execution Replay Certificate
+
+This capsule demonstrates deterministic certification of execution replay identity.
+
+The ERC kernel verifies whether two executions of a computation produce:
+• identical outputs
+• identical ordered execution traces
+
+If outputs match but traces diverge, the certificate returns the exact first divergence step.
+If both output and trace match, the execution is certified as replay-identical.
+
+Certified properties demonstrated in this capsule:
+
+• deterministic execution replay certification
+• exact first divergence detection
+• replay-verifiable certification results
+• invariant execution identity across independent runs
+
+Replay identity invariant:
+
+B_A = B_B
+
+where two independent executions produce byte-identical certification results.
+
+Freeze boundary files:
+
+erc_core.py
+erc_demo.py
+RUN_ERC.cmd
+VERIFY_ERC.cmd
+REPLAY_ERC.cmd
+RUN_ALL_TESTS.cmd
+OUT_PRIMARY.txt
+OUT_A.txt
+OUT_B.txt
+ERC_MANIFEST.sha256
+FREEZE_NOTE.txt
+
+The manifest file ERC_MANIFEST.sha256 records the SHA256 hash of each freeze-boundary file.
+
+Manifest verification and replay verification can be reproduced on any compatible system by executing:
+
+RUN_ALL_TESTS.cmd
+
+SSUM-AIM Observatory
+Deterministic AI Kernel Demonstration

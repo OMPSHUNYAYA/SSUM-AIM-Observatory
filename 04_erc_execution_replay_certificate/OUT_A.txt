@@ -1,0 +1,26 @@
+Example 1 — Same output, different execution path
+RunA factorial_mul: output=5040 trace_len=6 trace_sha256=2ed0cc0945970b57...
+RunB factorial_add: output=5040 trace_len=27 trace_sha256=a4f44ba2cf5415e0...
+('FAIL', 'TRACE_DIVERGENCE', 0, ('mul', 1, 2), ('add', 0, 1))
+Certificate: REPLAY FAILED
+First divergence at step: 0
+RunA step: ('mul', 1, 2)
+RunB step: ('add', 0, 1)
+
+Example 2 — Same output, same execution path
+RunA factorial_mul: output=5040 trace_len=6 trace_sha256=2ed0cc0945970b57...
+RunB factorial_mul_clone: output=5040 trace_len=6 trace_sha256=2ed0cc0945970b57...
+('PASS', 'REPLAY_CERTIFIED', 5040, 6, None)
+Certificate: REPLAY CERTIFIED
+Output: 5040
+Trace length: 6
+
+Example 3 — Different output
+RunA factorial_mul: output=5040 trace_len=6 trace_sha256=2ed0cc0945970b57...
+RunB factorial_bug: output=4032 trace_len=6 trace_sha256=81f0346bec2d2c95...
+('FAIL', 'OUTPUT_MISMATCH', 5040, 4032, None)
+Certificate: OUTPUT MISMATCH
+RunA output: 5040
+RunB output: 4032
+
+ERC execution complete.
