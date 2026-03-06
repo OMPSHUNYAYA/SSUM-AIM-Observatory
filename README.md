@@ -8,12 +8,12 @@
 ![Deterministic](https://img.shields.io/badge/Deterministic-Yes-green)
 ![Replay--Identity](https://img.shields.io/badge/Replay--Identity-B_A%20%3D%20B_B-brightgreen)
 ![Manifest--Certified](https://img.shields.io/badge/Manifest-Certified-blue)
-![Tiny--Kernel](https://img.shields.io/badge/Kernel-~3KB%20Inspectable-orange)
+![Tiny--Kernel](https://img.shields.io/badge/Kernels-1.05KB%2B-orange)
 ![Infrastructure--Independent](https://img.shields.io/badge/Infrastructure-Independent-lightgrey)
 ![Binary--Conformance](https://img.shields.io/badge/Conformance-Binary-red)
 ![Open--Standard](https://img.shields.io/badge/Standard-Open-blue)
 
-**Deterministic AI Certification Kernels • Manifest-Bound Execution • Replay-Verified Identity • Infrastructure-Independent Verification • Open Standard**
+**Deterministic AI Certification Kernels (1.05 KB+) • Manifest-Bound Execution • Replay-Verified Identity • Infrastructure-Independent Verification • Open Standard**
 
 ---
 
@@ -41,7 +41,8 @@ Only reproducible computation.
 
 ## Purpose
 
-The SSUM-AIM Observatory (Artificial Intelligence Manifest Observatory) is a civilization-grade collection of deterministic AI certification kernels.
+The SSUM-AIM Observatory (Artificial Intelligence Manifest Observatory) is a civilization-grade collection of deterministic AI certification kernels.  
+Some kernels are as compact as 1.05 KB+.
 
 Each case is not merely a program.
 
@@ -238,13 +239,13 @@ Only replay identity defines certification validity.
 
 Each certification kernel is intentionally minimal.
 
-The initial certification capsules (**CIC**, **AIC**, **CYC**, and **ERC**) — including kernel and demo — are each only a few kilobytes in total.
+The Observatory includes deterministic AI kernels as compact as 1.05 KB+, while preserving full inspectability and replay-verifiable certification discipline.
 
 No frameworks.  
 No dependencies.  
 No hidden infrastructure.
 
-Deterministic certification power in a few kilobytes.
+Deterministic certification power in approximately one kilobyte.
 
 Small size is not the focus.  
 Small size is the evidence.
@@ -371,6 +372,8 @@ Given a function:
 Where `D` is a finite, fully enumerable domain.
 
 AIC evaluates structural invertibility over `D`.
+
+In its compact certification form, AIC demonstrates that deterministic inverse certification can be delivered in kernels as small as 1.05 KB+.
 
 ### Certification Logic
 
@@ -895,4 +898,4 @@ Conformance defined exclusively by:
 
 ## One-Line Summary
 
-SSUM-AIM Observatory (Artificial Intelligence Manifest Observatory) provides deterministic AI execution manifest certification, where computational identity and lineage are proven solely through replay-verifiable manifest equality (`B_A = B_B`), delivered in tiny, fully inspectable kernels designed for civilization-grade execution integrity.
+SSUM-AIM Observatory (Artificial Intelligence Manifest Observatory) provides deterministic AI execution manifest certification, where computational identity and lineage are proven solely through replay-verifiable manifest equality (`B_A = B_B`), delivered in deterministic AI kernels as compact as 1.05 KB+ and designed for civilization-grade execution integrity.
