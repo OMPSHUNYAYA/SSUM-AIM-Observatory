@@ -237,14 +237,14 @@ Freeze defines structural immutability.
 
 Examples include:
 
-• algorithm identity  
-• exact first divergence detection  
-• invertibility or collision witness  
-• lineage continuity  
-• cycle structure certification (`mu`, `lambda`, cycle values)  
-• replay identity verification  
+• **algorithm identity certification** *(CIC capsule)*  
+• **exact first divergence detection** *(CIC capability)*  
+• **invertibility certification or collision witness** *(AIC capsule)*  
+• **lineage continuity certification**  
+• **cycle structure certification** *(CYC capsule — `mu`, `lambda`, cycle values)*  
+• **replay identity verification** under the invariant `B_A = B_B`
 
-These are deterministic structural certificates.
+These are **deterministic structural certificates**.
 
 Not statistical conclusions.
 
