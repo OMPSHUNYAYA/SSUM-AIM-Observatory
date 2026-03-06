@@ -98,7 +98,7 @@ Examples include:
 • identity certification kernel  
 • inverse certification kernel  
 • cycle certification kernel  
-• lineage certification kernel  
+• execution lineage certification kernel
 
 Each kernel produces a deterministic certificate artifact.
 
@@ -238,7 +238,7 @@ Freeze defines structural immutability.
 Examples include:
 
 • **algorithm identity certification** *(CIC capsule)*  
-• **exact first divergence detection** *(CIC capability)*  
+• **exact first execution divergence detection** *(ERC capsule)*  
 • **invertibility certification or collision witness** *(AIC capsule)*  
 • **lineage continuity certification**  
 • **cycle structure certification** *(CYC capsule — `mu`, `lambda`, cycle values)*  
