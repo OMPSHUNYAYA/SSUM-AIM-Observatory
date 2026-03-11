@@ -15,7 +15,8 @@
 
 **Deterministic AI Certification Kernels (1.05 KB+) • Manifest-Bound Execution • Replay-Verified Identity • Infrastructure-Independent Verification • Open Standard**
 
-*In SSUM-AIM, Artificial Intelligence refers to deterministic computational intelligence rather than probabilistic machine learning.*
+*Within SSUM-AIM, Artificial Intelligence refers to AIM (Artificial Intelligence Manifest).
+In this context, AIM denotes deterministic computational intelligence expressed through replay-verifiable execution rather than probabilistic machine learning.*
 
 ---
 
